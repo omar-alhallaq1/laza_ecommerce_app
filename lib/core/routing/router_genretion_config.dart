@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 
-class RouterGenretionConfig {
+class RouterGanretionConfig {
   static GoRouter goRouter = GoRouter(
     initialLocation: AppRoutes.splashScreen,
     routes: [
