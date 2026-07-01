@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 
 class RouterGanretionConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.splashScreen,
+    initialLocation: AppRoutes.onboardingScreen,
     routes: [
       GoRoute(
-        name: AppRoutes.splashScreen,
-        path: AppRoutes.splashScreen,
+        name: AppRoutes.onboardingScreen,
+        path: AppRoutes.onboardingScreen,
 
-        builder: (context, state) => Container(),
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
         name: AppRoutes.loginscreen,
