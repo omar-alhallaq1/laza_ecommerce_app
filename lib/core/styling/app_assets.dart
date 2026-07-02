@@ -8,7 +8,8 @@ class AppAssets {
   static const String layar1 = "${imagepath}layar1.png";
   static const String layer2 = "${imagepath}layer2.png";
   static const String layer3 = "${imagepath}layer3.png";
-  static const String onboardingImage4 = "${imagepath}onboardingImage4.png";
-  static const String onboardingImage5 = "${imagepath}onboardingImage5.png";
-  static const String onboardingImage6 = "${imagepath}onboardingImage6.png";
+  static const String arrowleft = "${iconpath}arrowleft.svg";
+  static const String facebooksvg = "${iconpath}facebooksvg.svg";
+  static const String twittersvg = "${iconpath}twittersvg.svg";
+  static const String googlesvg = "${iconpath}googlesvg.svg";
 }

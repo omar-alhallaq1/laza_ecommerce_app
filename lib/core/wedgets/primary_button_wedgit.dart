@@ -59,10 +59,10 @@ class PrimaryButtonwidget extends StatelessWidget {
 
           Text(
             buttontext ?? "Button",
-            style: TextStyle(
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: textColor ?? Colors.white,
               fontSize: fontsize ?? 16.sp,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600, // لتثخين الخط ليطابق الفيجما
             ),
           ),
           trailingicon != null ? Gap(8.w) : SizedBox.shrink(),

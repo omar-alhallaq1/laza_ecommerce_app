@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:laza_ecommerce_app/core/auth/login_screen.dart';
 import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 
@@ -17,7 +18,7 @@ class RouterGanretionConfig {
         name: AppRoutes.loginscreen,
         path: AppRoutes.loginscreen,
 
-        builder: (context, state) => Container(),
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         name: AppRoutes.signupscreen,

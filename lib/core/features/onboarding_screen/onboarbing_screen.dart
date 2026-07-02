@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 
@@ -49,16 +51,14 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
 
-          // 3. طبقة صورة الراجل (الموديل) - أبعاد نسبية بدل الأرقام الثابتة
           Positioned(
-            top: size.height * 0.07.h,
+            top: size.height * 0.12.h,
             left: 0,
             right: 0,
             bottom: size.height * 0.24.h,
             child: Image.asset(AppAssets.onbording, fit: BoxFit.contain),
           ),
 
-          // 4. طبقة الكارت الأبيض السفلي
           Positioned(
             bottom: 40.h,
             left: 15,
@@ -101,7 +101,11 @@ class OnboardingScreen extends StatelessWidget {
                         child: SizedBox(
                           height: 55,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              GoRouter.of(
+                                context,
+                              ).pushNamed(AppRoutes.loginscreen);
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFF5F6FA),
                               foregroundColor: Colors.grey[600],
