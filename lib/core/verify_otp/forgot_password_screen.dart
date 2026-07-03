@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
+import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
 import 'package:laza_ecommerce_app/core/wedgets/custom_back_button_widget.dart';
 import 'package:laza_ecommerce_app/core/wedgets/custom_text_field.dart';
+import 'package:laza_ecommerce_app/core/wedgets/primary_button_wedgit.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -22,15 +26,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+        body: Form(
+          key: formKey,
           child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20).r,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -82,7 +86,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
                       Gap(160.h),
                       Center(
-                        // <-- هذا اللي هيجيب الـ SizedBox كله في نص الشاشة أفقياً
                         child: SizedBox(
                           width: 290.w,
                           child: Text(
@@ -94,8 +97,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                Gap(25.h),
+                PrimaryButtonwidget(
+                  width: double.infinity,
+                  height: 75.h,
+                  borderradius: 0.r,
+                  fontsize: 20.sp,
+                  buttontext: "Confirm Email",
+                  buttoncolor: AppColors.primarycolor,
+                  textColor: AppColors.whitecolor,
+                  onpress: () {
+                    GoRouter.of(
+                      context,
+                    ).pushNamed(AppRoutes.verificationcodeScreen);
+                  },
+                ),
+              ],
             ),
           ),
         ),

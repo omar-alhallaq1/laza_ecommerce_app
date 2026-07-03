@@ -6,6 +6,7 @@ import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_sc
 import 'package:laza_ecommerce_app/core/features/started_screen/started_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/verify_otp/forgot_password_screen.dart';
+import 'package:laza_ecommerce_app/core/verify_otp/verification_code_screen.dart';
 
 class RouterGanretionConfig {
   static GoRouter goRouter = GoRouter(
@@ -42,10 +43,10 @@ class RouterGanretionConfig {
         builder: (context, state) => const ForgotPasswordScreen(),
       ),
       GoRoute(
-        name: AppRoutes.adressScreen,
-        path: AppRoutes.adressScreen,
+        name: AppRoutes.verificationcodeScreen,
+        path: AppRoutes.verificationcodeScreen,
 
-        builder: (context, state) => Container(),
+        builder: (context, state) => const VerificationCodeScreen(),
       ),
     ],
   );

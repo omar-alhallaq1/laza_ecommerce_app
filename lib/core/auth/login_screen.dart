@@ -183,7 +183,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              // ---------------- Sign Up Button (عرض كامل، خارج الـ Padding) ----------------
               PrimaryButtonwidget(
                 width: double.infinity,
                 height: 75.h,
