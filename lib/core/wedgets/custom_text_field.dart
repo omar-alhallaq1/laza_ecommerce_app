@@ -43,9 +43,8 @@ class CustomTextField extends StatelessWidget {
         style: AppStyles.black16w500style,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(
+          hintStyle: AppStyles.black13boldstyle.copyWith(
             fontSize: 16.sp,
-            color: const Color(0xff8F959E),
             fontWeight: FontWeight.w400,
           ),
           contentPadding: EdgeInsets.symmetric(

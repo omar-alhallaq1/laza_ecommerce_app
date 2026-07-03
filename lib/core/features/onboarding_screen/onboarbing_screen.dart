@@ -104,7 +104,7 @@ class OnboardingScreen extends StatelessWidget {
                             onPressed: () {
                               GoRouter.of(
                                 context,
-                              ).pushNamed(AppRoutes.loginscreen);
+                              ).pushNamed(AppRoutes.startedscreen);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFF5F6FA),

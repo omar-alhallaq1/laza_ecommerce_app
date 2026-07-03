@@ -23,8 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   // ------------------ Controllers ------------------
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-
   // ------------------ UI State ------------------
   bool _isRemembered = false;
   bool _obscurePassword = true;
@@ -33,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
-    _emailController.dispose();
     super.dispose();
   }
 
@@ -114,12 +111,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Gap(30.h),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "Forgot Password?",
-                        style: AppStyles.black16w500style.copyWith(
-                          color: Colors.red,
+                    InkWell(
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRoutes.ceatenewpasswordScreen);
+                      },
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Forgot Password?",
+                          style: AppStyles.black16w500style.copyWith(
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),

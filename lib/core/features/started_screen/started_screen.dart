@@ -113,12 +113,17 @@ class StartedScreen extends StatelessWidget {
                           ),
                           children: [
                             TextSpan(
-                              text: "Register",
+                              text: "Login",
                               style: AppStyles.black16w500style.copyWith(
                                 color: AppColors.blackcolor,
                                 fontSize: 15.sp,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  GoRouter.of(
+                                    context,
+                                  ).pushNamed(AppRoutes.loginscreen);
+                                },
                             ),
                           ],
                         ),
@@ -135,7 +140,7 @@ class StartedScreen extends StatelessWidget {
                 height: 75.h,
                 borderradius: 0.r,
                 fontsize: 20.sp,
-                buttontext: "Login",
+                buttontext: "Create an Account",
                 buttoncolor: AppColors.primarycolor,
                 textColor: AppColors.whitecolor,
                 onpress: () {
