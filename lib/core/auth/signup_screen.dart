@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,14 +11,14 @@ import 'package:laza_ecommerce_app/core/wedgets/custom_back_button_widget.dart';
 import 'package:laza_ecommerce_app/core/wedgets/custom_text_field.dart';
 import 'package:laza_ecommerce_app/core/wedgets/primary_button_wedgit.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   // ------------------ Controllers ------------------
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -62,16 +61,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Gap(15.h),
                     Align(
                       alignment: Alignment.center,
-                      child: Text("Welcome", style: AppStyles.black28boldstyle),
+                      child: Text("Sign Up", style: AppStyles.black28boldstyle),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Please enter your data to continue",
-                        style: AppStyles.black16w500style,
-                      ),
-                    ),
-                    Gap(164.h),
+                    Gap(60.h),
 
                     // ---------------- Username ----------------
                     Text("Username", style: AppStyles.black16w500style),
@@ -113,17 +105,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     ),
-                    Gap(30.h),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "Forgot Password?",
-                        style: AppStyles.black16w500style.copyWith(
-                          color: Colors.red,
-                        ),
+                    Gap(20.h),
+
+                    // ---------------- Email ----------------
+                    Text("Email Address", style: AppStyles.black16w500style),
+                    Gap(10.h),
+                    CustomTextField(
+                      controller: _emailController,
+                      hintText: "bill.sanders@example.com",
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.done,
+                      suffixIcon: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                        size: 20.sp,
                       ),
                     ),
-                    Gap(40.h),
+                    Gap(20.h),
+
+                    // ---------------- Remember Me ----------------
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -151,30 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    Gap(107.h),
-                    Center(
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          text:
-                              "By connecting your account confirm that you agree with our  ",
-                          style: AppStyles.gry13meduemstyle.copyWith(
-                            fontSize: 15.sp,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "Term and Condition",
-                              style: AppStyles.black16w500style.copyWith(
-                                color: AppColors.blackcolor,
-                                fontSize: 15.sp,
-                              ),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Gap(25.h),
+                    Gap(168.h),
                   ],
                 ),
               ),
@@ -185,11 +162,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 75.h,
                 borderradius: 0.r,
                 fontsize: 20.sp,
-                buttontext: "Login",
+                buttontext: "Sign Up",
                 buttoncolor: AppColors.primarycolor,
                 textColor: AppColors.whitecolor,
                 onpress: () {
-                  //  GoRouter.of(context).pushNamed(AppRoutes.signupscreen);
+                  GoRouter.of(context).pushNamed(AppRoutes.signupscreen);
                 },
               ),
             ],
