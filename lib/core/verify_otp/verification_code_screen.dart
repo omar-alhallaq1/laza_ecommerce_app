@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:pinput/pinput.dart'; // استيراد مكتبة الـ OTP الجديدة
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -17,25 +18,52 @@ class VerificationCodeScreen extends StatefulWidget {
 
 class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController code1Controller = TextEditingController(text: "7");
-  TextEditingController code2Controller = TextEditingController(text: "4");
-  TextEditingController code3Controller = TextEditingController(text: "2");
-  TextEditingController code4Controller = TextEditingController(text: "3");
+  final TextEditingController pinController = TextEditingController();
+
+  @override
+  void dispose() {
+    pinController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    // 1. تحديد التنسيق الافتراضي للمربعات (Default Style)
+    final defaultPinTheme = PinTheme(
+      width: 60.w,
+      height: 65.h,
+      textStyle: TextStyle(
+        fontSize: 22.sp,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14.r),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+    );
+
+    // 2. تحديد شكل المربع عندما يقوم المستخدم بالضغط عليه وكتابة الرقم (Focused Style)
+    final focusedPinTheme = defaultPinTheme.copyWith(
+      decoration: defaultPinTheme.decoration!.copyWith(
+        border: Border.all(
+          color: AppColors.primarycolor,
+          width: 1.5,
+        ), // يتغير للون البنفسجي الأساسي للتطبيق
+      ),
+    );
+
     return SafeArea(
       child: Scaffold(
-        body: Form(
-          key: formKey,
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20).r,
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Gap(45.h),
@@ -47,6 +75,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                         ),
                         onTap: () => Navigator.pop(context),
                       ),
+                      Gap(15.h),
                       Align(
                         alignment: Alignment.center,
                         child: Text(
@@ -70,93 +99,25 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                           ),
                         ),
                       ),
-                      Gap(80.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 60.w,
-                            height: 65.h,
-                            child: TextFormField(
-                              controller: code1Controller,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              maxLength: 1,
-                              style: TextStyle(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14.r),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 60.w,
-                            height: 65.h,
-                            child: TextFormField(
-                              controller: code2Controller,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              maxLength: 1,
-                              style: TextStyle(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14.r),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 60.w,
-                            height: 65.h,
-                            child: TextFormField(
-                              controller: code3Controller,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              maxLength: 1,
-                              style: TextStyle(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14.r),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 60.w,
-                            height: 65.h,
-                            child: TextFormField(
-                              controller: code4Controller,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              maxLength: 1,
-                              style: TextStyle(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14.r),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      Gap(60.h),
+
+                      // 3. استدعاء ويدجيت الـ OTP السحري هنا بدلاً من الـ Row القديم
+                      Align(
+                        alignment: Alignment.center,
+                        child: Pinput(
+                          length: 4, // عدد مربعات التحقق
+                          controller: pinController,
+                          defaultPinTheme: defaultPinTheme,
+                          focusedPinTheme: focusedPinTheme,
+                          // لمنع ظهور الأنيميشن الافتراضي لو أردت شكل ثابت ونظيف كالتصميم
+                          showCursor: true,
+                          onCompleted: (pin) {
+                            print("الرمز المدخل بالكامل: $pin");
+                          },
+                        ),
                       ),
-                      Gap(40.h),
+
+                      Gap(166.h),
                       Center(
                         child: Text(
                           "00:20 resend confirmation code.",
@@ -177,6 +138,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                   buttoncolor: AppColors.primarycolor,
                   textColor: AppColors.whitecolor,
                   onpress: () {
+                    // لقراءة الرمز المدخل عند الضغط على الزر:
+                    String currentOtp = pinController.text;
+                    print("OTP عند الضغط: $currentOtp");
+
                     //  GoRouter.of(context).pushNamed(AppRoutes.resetpasswordscreen);
                   },
                 ),
