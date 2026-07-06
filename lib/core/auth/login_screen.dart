@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         GoRouter.of(
                           context,
-                        ).pushNamed(AppRoutes.ceatenewpasswordScreen);
+                        ).pushNamed(AppRoutes.forgotpasswordscreen);
                       },
                       child: Align(
                         alignment: Alignment.centerRight,

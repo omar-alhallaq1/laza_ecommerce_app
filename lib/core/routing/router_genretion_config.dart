@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/auth/login_screen.dart';
 import 'package:laza_ecommerce_app/core/auth/signup_screen.dart';
@@ -6,6 +5,7 @@ import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_sc
 import 'package:laza_ecommerce_app/core/features/started_screen/started_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/verify_otp/forgot_password_screen.dart';
+import 'package:laza_ecommerce_app/core/verify_otp/new_password_screen.dart';
 import 'package:laza_ecommerce_app/core/verify_otp/verification_code_screen.dart';
 
 class RouterGanretionConfig {
@@ -37,8 +37,8 @@ class RouterGanretionConfig {
         builder: (context, state) => const StartedScreen(),
       ),
       GoRoute(
-        name: AppRoutes.ceatenewpasswordScreen,
-        path: AppRoutes.ceatenewpasswordScreen,
+        name: AppRoutes.forgotpasswordscreen,
+        path: AppRoutes.forgotpasswordscreen,
 
         builder: (context, state) => const ForgotPasswordScreen(),
       ),
@@ -47,6 +47,12 @@ class RouterGanretionConfig {
         path: AppRoutes.verificationcodeScreen,
 
         builder: (context, state) => const VerificationCodeScreen(),
+      ),
+      GoRoute(
+        name: AppRoutes.ceatenewpasswordScreen,
+        path: AppRoutes.ceatenewpasswordScreen,
+
+        builder: (context, state) => const NewPasswordScreen(),
       ),
     ],
   );

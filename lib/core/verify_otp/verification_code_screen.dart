@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:pinput/pinput.dart'; // استيراد مكتبة الـ OTP الجديدة
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
@@ -53,100 +55,100 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
       ),
     );
 
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Gap(45.h),
-                      CustomBackButtonWidget(
-                        icon: SvgPicture.asset(
-                          AppAssets.arrowleft,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        onTap: () => Navigator.pop(context),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gap(45.h),
+                    CustomBackButtonWidget(
+                      icon: SvgPicture.asset(
+                        AppAssets.arrowleft,
+                        width: 24.w,
+                        height: 24.h,
                       ),
-                      Gap(15.h),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Verification Code",
-                          style: TextStyle(
-                            fontSize: 28.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
+                      onTap: () => Navigator.pop(context),
+                    ),
+                    Gap(15.h),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Verification Code",
+                        style: TextStyle(
+                          fontSize: 28.sp,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Gap(68.h),
-                      Align(
-                        alignment: Alignment.center,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.r),
-                          child: Image.asset(
-                            AppAssets.forgetpassword,
-                            width: 190.w,
-                            height: 165.h,
-                            fit: BoxFit.contain,
-                          ),
+                    ),
+                    Gap(68.h),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: Image.asset(
+                          AppAssets.forgetpassword,
+                          width: 190.w,
+                          height: 165.h,
+                          fit: BoxFit.contain,
                         ),
                       ),
-                      Gap(60.h),
+                    ),
+                    Gap(60.h),
 
-                      // 3. استدعاء ويدجيت الـ OTP السحري هنا بدلاً من الـ Row القديم
-                      Align(
-                        alignment: Alignment.center,
-                        child: Pinput(
-                          length: 4, // عدد مربعات التحقق
-                          controller: pinController,
-                          defaultPinTheme: defaultPinTheme,
-                          focusedPinTheme: focusedPinTheme,
-                          // لمنع ظهور الأنيميشن الافتراضي لو أردت شكل ثابت ونظيف كالتصميم
-                          showCursor: true,
-                          onCompleted: (pin) {
-                            print("الرمز المدخل بالكامل: $pin");
-                          },
-                        ),
+                    // 3. استدعاء ويدجيت الـ OTP السحري هنا بدلاً من الـ Row القديم
+                    Align(
+                      alignment: Alignment.center,
+                      child: Pinput(
+                        length: 4, // عدد مربعات التحقق
+                        controller: pinController,
+                        defaultPinTheme: defaultPinTheme,
+                        focusedPinTheme: focusedPinTheme,
+                        // لمنع ظهور الأنيميشن الافتراضي لو أردت شكل ثابت ونظيف كالتصميم
+                        showCursor: true,
+                        onCompleted: (pin) {
+                          print("الرمز المدخل بالكامل: $pin");
+                        },
                       ),
+                    ),
 
-                      Gap(166.h),
-                      Center(
-                        child: Text(
-                          "00:20 resend confirmation code.",
-                          textAlign: TextAlign.center,
-                          style: AppStyles.gry13meduemstyle,
-                        ),
+                    Gap(166.h),
+                    Center(
+                      child: Text(
+                        "00:20 resend confirmation code.",
+                        textAlign: TextAlign.center,
+                        style: AppStyles.gry13meduemstyle,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Gap(25.h),
-                PrimaryButtonwidget(
-                  width: double.infinity,
-                  height: 75.h,
-                  borderradius: 0.r,
-                  fontsize: 20.sp,
-                  buttontext: "Confirm Code",
-                  buttoncolor: AppColors.primarycolor,
-                  textColor: AppColors.whitecolor,
-                  onpress: () {
-                    // لقراءة الرمز المدخل عند الضغط على الزر:
-                    String currentOtp = pinController.text;
-                    print("OTP عند الضغط: $currentOtp");
+              ),
+              Gap(25.h),
+              PrimaryButtonwidget(
+                width: double.infinity,
+                height: 75.h,
+                borderradius: 0.r,
+                fontsize: 20.sp,
+                buttontext: "Confirm Code",
+                buttoncolor: AppColors.primarycolor,
+                textColor: AppColors.whitecolor,
+                onpress: () {
+                  // لقراءة الرمز المدخل عند الضغط على الزر:
+                  String currentOtp = pinController.text;
+                  // print("OTP عند الضغط: $currentOtp");
 
-                    //  GoRouter.of(context).pushNamed(AppRoutes.resetpasswordscreen);
-                  },
-                ),
-              ],
-            ),
+                  GoRouter.of(
+                    context,
+                  ).pushNamed(AppRoutes.ceatenewpasswordScreen);
+                },
+              ),
+            ],
           ),
         ),
       ),
