@@ -159,7 +159,7 @@ class OnboardingScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
