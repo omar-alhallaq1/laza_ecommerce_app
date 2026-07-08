@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
-import 'package:pinput/pinput.dart'; // استيراد مكتبة الـ OTP الجديدة
+import 'package:pinput/pinput.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
