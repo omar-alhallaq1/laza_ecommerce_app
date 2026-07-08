@@ -13,4 +13,8 @@ class AppAssets {
   static const String twittersvg = "${iconpath}twittersvg.svg";
   static const String googlesvg = "${iconpath}googlesvg.svg";
   static const String forgetpassword = "${imagepath}forgetpassword.png";
+  static const String homesvg = "${iconpath}Homesvg.svg";
+  static const String heartsvg = "${iconpath}Heartsvg.svg";
+  static const String bagsvg = "${iconpath}Bagsvg.svg";
+  static const String walletsvg = "${iconpath}Walletsvg.svg";
 }

@@ -192,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 buttoncolor: AppColors.primarycolor,
                 textColor: AppColors.whitecolor,
                 onpress: () {
-                  //  GoRouter.of(context).pushNamed(AppRoutes.signupscreen);
+                  //  GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
                 },
               ),
             ],
