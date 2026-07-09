@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:laza_ecommerce_app/core/features/home_screen/home_screen.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 
@@ -13,7 +14,7 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
-  List<Widget> screens = [Container(), Container(), Container(), Container()];
+  List<Widget> screens = [HomeScreen(), Container(), Container(), Container()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(

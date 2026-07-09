@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/auth/login_screen.dart';
 import 'package:laza_ecommerce_app/core/auth/signup_screen.dart';
+import 'package:laza_ecommerce_app/core/features/home_screen/home_screen.dart';
+import 'package:laza_ecommerce_app/core/features/mainscreen/main_screen.dart';
 import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_screen.dart';
 import 'package:laza_ecommerce_app/core/features/started_screen/started_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
@@ -53,6 +55,12 @@ class RouterGanretionConfig {
         path: AppRoutes.ceatenewpasswordScreen,
 
         builder: (context, state) => const NewPasswordScreen(),
+      ),
+      GoRoute(
+        name: AppRoutes.mainscreen,
+        path: AppRoutes.mainscreen,
+
+        builder: (context, state) => const MainScreen(),
       ),
     ],
   );

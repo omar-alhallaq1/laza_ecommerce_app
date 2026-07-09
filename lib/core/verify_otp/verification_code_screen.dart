@@ -141,7 +141,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                 onpress: () {
                   // لقراءة الرمز المدخل عند الضغط على الزر:
                   String currentOtp = pinController.text;
-                  // print("OTP عند الضغط: $currentOtp");
+                  print("OTP عند الضغط: $currentOtp");
 
                   GoRouter.of(
                     context,

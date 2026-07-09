@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
-import 'package:laza_ecommerce_app/core/styling/app_fonts.dart';
 
 class AppStyles {
   static TextStyle primaryheadlinestyle = TextStyle(
