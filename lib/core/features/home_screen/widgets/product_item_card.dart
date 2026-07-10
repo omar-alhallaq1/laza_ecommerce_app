@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,6 +11,7 @@ class ProductCard extends StatelessWidget {
   final String title;
   final double price;
   final VoidCallback? onFavoriteTap;
+  final VoidCallback? onCartTap;
 
   const ProductCard({
     super.key,
@@ -18,6 +20,7 @@ class ProductCard extends StatelessWidget {
 
     required this.price,
     this.onFavoriteTap,
+    this.onCartTap,
   });
 
   @override
@@ -27,20 +30,21 @@ class ProductCard extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              height: 200.h,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF5F6F8),
-                borderRadius: BorderRadius.circular(20.w),
-              ),
-              child: Center(
-                child: SizedBox(
-                  width: 160.w,
-                  height: 203.h,
-                  child: Icon(Icons.image_outlined, color: Colors.grey),
-                ),
-              ),
-            ),
+            imageUrl.isEmpty
+                ? InkWell(
+                    onTap: onCartTap,
+                    child: Container(
+                      height: 200.h,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F6F8),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.image_outlined, size: 60),
+                      ),
+                    ),
+                  )
+                : CachedNetworkImage(imageUrl: imageUrl, fit: BoxFit.contain),
             Positioned(
               top: 12,
               right: 12,

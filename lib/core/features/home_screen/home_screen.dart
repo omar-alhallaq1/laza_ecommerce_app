@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/brand_card.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/custom_icon_button.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/product_item_card.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -98,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10.w),
+                Gap(10.w),
                 InkWell(
                   onTap: () {},
                   child: Container(
@@ -165,6 +167,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 itemBuilder: (context, index) {
                   return ProductCard(
+                    onCartTap: () {
+                      GoRouter.of(context).push(AppRoutes.productDetailsScreen);
+                    },
                     imageUrl: '',
                     title: 'Nike Sportswear Club Fleece ',
                     price: 99,
