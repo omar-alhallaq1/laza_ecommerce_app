@@ -14,14 +14,12 @@ class ProductDetailHeader extends StatelessWidget {
     final hasImage = imageUrl != null && imageUrl!.isNotEmpty;
 
     return Stack(
-      alignment: Alignment.center, // لضمان سنترة دائرة اللوجو في المنتصف أفقياً
-
       children: [
         // 1. حاوية الصورة (الخلفية الرمادية الحالية)
         Container(
           height: 342.h,
           width: double.infinity,
-          color: const Color(0xFFF5F6F8), // نفس درجة اللون الرمادي للكارد
+          color: const Color(0xFFF5F6F8),
           child: hasImage
               ? Image.network(imageUrl!, fit: BoxFit.cover)
               : const Center(
