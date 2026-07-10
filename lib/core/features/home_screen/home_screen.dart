@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/brand_card.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/custom_icon_button.dart';
+import 'package:laza_ecommerce_app/core/features/home_screen/widgets/product_item_card.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -150,6 +151,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   BrandCardItem(name: 'Puma', logoUrl: '', onTap: () {}),
                 ],
+              ),
+            ),
+            Gap(20.h),
+            Expanded(
+              child: GridView.builder(
+                itemCount: 10,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15.w,
+                  mainAxisSpacing: 15.h,
+                  childAspectRatio: 0.57,
+                ),
+                itemBuilder: (context, index) {
+                  return ProductCard(
+                    imageUrl: '',
+                    title: 'Nike Sportswear Club Fleece ',
+                    price: 99,
+                  );
+                },
               ),
             ),
           ],
