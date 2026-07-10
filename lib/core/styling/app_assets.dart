@@ -20,4 +20,5 @@ class AppAssets {
   static const String menusvg = "${iconpath}menusvg.svg";
   static const String searchsvg = "${iconpath}searchsvg.svg";
   static const String voicesvg = "${iconpath}voicesvg.svg";
+  static const String starsvg = "${iconpath}Starsvg.svg";
 }

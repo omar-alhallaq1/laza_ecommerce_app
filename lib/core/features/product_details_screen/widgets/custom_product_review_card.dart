@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -7,6 +8,7 @@ class ProductReviewCard extends StatelessWidget {
   final String name;
   final String date;
   final double rating;
+  final double starSize;
   final String comment;
 
   const ProductReviewCard({
@@ -15,6 +17,7 @@ class ProductReviewCard extends StatelessWidget {
     required this.date,
     required this.rating,
     required this.comment,
+    required this.starSize,
   });
 
   @override
@@ -82,14 +85,17 @@ class ProductReviewCard extends StatelessWidget {
                 ),
                 Gap(4.h),
 
-                const Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star_border, color: Colors.orange, size: 16),
-                  ],
+                RatingBarIndicator(
+                  rating:
+                      starSize, // القيمة الثابتة للتصميم حالياً (هتعرضلك 4 نجوم برتقالي وواحدة رمادي)
+                  itemCount: 5,
+                  itemSize: 16,
+                  direction: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      const Icon(Icons.star, color: Colors.orange),
+                  unratedColor: const Color(
+                    0xFFE0E0E0,
+                  ), // لون النجمة غير الممتلئة (الرمادي الفاتح مثل التصميم)
                 ),
               ],
             ),

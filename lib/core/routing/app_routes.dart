@@ -9,4 +9,5 @@ class AppRoutes {
   static const String forgotpasswordscreen = '/forgotpasswordscreen';
   static const String mainscreen = '/mainscreen';
   static const String productDetailsScreen = '/productDetailsScreen';
+  static const String reviewsScreen = '/reviewsScreen';
 }

@@ -171,7 +171,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          GoRouter.of(
+                            context,
+                          ).pushNamed(AppRoutes.reviewsScreen);
+                        },
                         child: Text(
                           'View All',
                           style: AppStyles.gry13meduemstyle,
@@ -183,6 +187,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ProductReviewCard(
                     name: 'Ronald Richards',
                     date: '13 Sep, 2020',
+                    starSize: 4.5,
                     rating: 4.5,
                     comment:
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet...',
@@ -227,6 +232,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ],
               ),
             ),
+            Gap(20.h),
             PrimaryButtonwidget(
               width: double.infinity,
               height: 75.h,
