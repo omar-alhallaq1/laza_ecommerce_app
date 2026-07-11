@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
+import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 
 class ReviewCardItem extends StatelessWidget {
   final String name;
@@ -34,12 +37,8 @@ class ReviewCardItem extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xFFF5F6F8),
-                    child: const Icon(
-                      Icons.person,
-                      color: Colors.grey,
-                      size: 22,
-                    ),
+                    backgroundColor: AppColors.lightgray,
+                    child: SvgPicture.asset(AppAssets.profile),
                   ),
                   const Gap(10),
 

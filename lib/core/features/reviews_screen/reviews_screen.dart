@@ -39,9 +39,9 @@ class ReviewsScreen extends StatelessWidget {
             ),
             Gap(30.h),
             ReviewsHeaderRow(
-              totalReviews: 20,
-              averageRating: 4.5,
-              starSize: 20,
+              totalReviews: '20',
+              averageRating: 3.5,
+              starSize: 15.sp,
               onAddReviewTap: () {},
             ),
             Gap(30.h),
@@ -49,8 +49,9 @@ class ReviewsScreen extends StatelessWidget {
               name: "John Doe",
 
               rating: 4.5,
-              date: '',
-              comment: '',
+              date: ' 2023-01-01',
+              comment:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet...',
               profileImage: '',
             ),
           ],
