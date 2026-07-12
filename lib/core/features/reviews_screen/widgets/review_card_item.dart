@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
+import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
 
 class ReviewCardItem extends StatelessWidget {
   final String name;
@@ -38,9 +40,15 @@ class ReviewCardItem extends StatelessWidget {
                   CircleAvatar(
                     radius: 20,
                     backgroundColor: AppColors.lightgray,
-                    child: SvgPicture.asset(AppAssets.profile),
+                    child: SvgPicture.asset(
+                      AppAssets.profile,
+                      colorFilter: ColorFilter.mode(
+                        AppColors.graycolor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                   ),
-                  const Gap(10),
+                  Gap(10.w),
 
                   Expanded(
                     child: Column(
@@ -50,29 +58,31 @@ class ReviewCardItem extends StatelessWidget {
                           name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                          style: AppStyles.black28boldstyle.copyWith(
+                            fontSize: 15.sp,
                           ),
                         ),
 
-                        const Gap(4),
+                        Gap(4.h),
 
                         Row(
                           children: [
-                            const Icon(
-                              Icons.access_time,
-                              size: 14,
-                              color: Colors.grey,
+                            SvgPicture.asset(
+                              AppAssets.clocksvg,
+                              width: 15.w,
+                              height: 15.h,
+                              colorFilter: ColorFilter.mode(
+                                AppColors.graycolor,
+                                BlendMode.srcIn,
+                              ),
                             ),
 
-                            const Gap(4),
+                            Gap(4),
 
                             Text(
                               date,
-                              style: const TextStyle(
-                                fontSize: 11,
-                                color: Colors.grey,
+                              style: AppStyles.gry13meduemstyle.copyWith(
+                                fontSize: 11.sp,
                               ),
                             ),
                           ],
@@ -84,25 +94,25 @@ class ReviewCardItem extends StatelessWidget {
               ),
             ),
 
-            const Gap(12),
+            Gap(12.w),
 
             Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
                         text: rating.toStringAsFixed(1),
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                        style: AppStyles.black28boldstyle.copyWith(
+                          fontSize: 15.sp,
                         ),
                       ),
-                      const TextSpan(
+                      TextSpan(
                         text: ' Rating',
-                        style: TextStyle(fontSize: 11, color: Colors.grey),
+                        style: AppStyles.gry13meduemstyle.copyWith(
+                          fontSize: 11.sp,
+                        ),
                       ),
                     ],
                   ),
@@ -113,21 +123,31 @@ class ReviewCardItem extends StatelessWidget {
                 RatingBarIndicator(
                   rating: rating,
                   itemCount: 5,
-                  itemSize: starSize ?? 5,
-                  itemBuilder: (_, __) =>
-                      const Icon(Icons.star, color: Colors.orange),
-                  unratedColor: const Color(0xFFE0E0E0),
+                  itemSize: starSize ?? 15.sp,
+                  unratedColor: const Color(0xff8F959E),
+                  itemBuilder: (_, __) => SvgPicture.asset(
+                    AppAssets.starsvg,
+                    width: 13.w,
+                    height: 13.h,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.brightOrange,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ],
             ),
           ],
         ),
 
-        const Gap(12),
+        Gap(12.h),
 
         Text(
           comment,
-          style: const TextStyle(fontSize: 14, color: Colors.grey, height: 1.5),
+          style: AppStyles.gry13meduemstyle.copyWith(
+            fontSize: 15.sp,
+            height: 1.5,
+          ),
         ),
       ],
     );
