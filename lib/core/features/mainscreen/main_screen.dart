@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:laza_ecommerce_app/core/features/cart_screen/cart_screen.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/home_screen.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
-  List<Widget> screens = [HomeScreen(), Container(), Container(), Container()];
+  List<Widget> screens = [HomeScreen(), Container(), CartScreen(), Container()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -80,7 +81,7 @@ class MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: selectedIndex == 2
                   ? Text(
-                      'Account',
+                      'Cart',
                       style: TextStyle(
                         color: AppColors.primarycolor,
                         fontWeight: FontWeight.bold,
@@ -97,7 +98,7 @@ class MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: selectedIndex == 3
                   ? Text(
-                      'Account',
+                      'Paments',
                       style: TextStyle(
                         color: AppColors.primarycolor,
                         fontWeight: FontWeight.bold,

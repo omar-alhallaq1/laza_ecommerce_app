@@ -46,7 +46,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                           ),
                           onTap: () => Navigator.pop(context),
                         ),
-                        Gap(92.w),
+                        Gap(95.w),
                         Text(
                           "Reviews",
                           style: AppStyles.black28boldstyle.copyWith(
@@ -82,7 +82,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                     CustomTextField2(
                       hintText: "Describe your experience?",
                       controller: reviewController,
-                      validator: (value) {},
+                      //   validator: (value) {},
                       width: 335.w,
                       maxLines: 7,
                     ),
