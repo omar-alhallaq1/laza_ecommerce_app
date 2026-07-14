@@ -27,4 +27,23 @@ class AppAssets {
   static const String delete = "${iconpath}delete.svg";
   static const String arrowup = "${iconpath}arrowup.svg";
   static const String arrowdown = "${iconpath}arrowdown.svg";
+  static const String arrowright = "${iconpath}arrowright.svg";
+  static const String locationsvg = "${iconpath}locationsvg.svg";
+  static const String mapimage = "${imagepath}mapimage.png";
+  static const String checksvg = "${iconpath}checksvg.svg";
+  static const String vicaimage = "${imagepath}vicaimage.png";
+  // static const String checksvg3 = "${iconpath}checksvg3.svg";
+  // static const String checksvg4 = "${iconpath}checksvg4.svg";
+  // static const String checksvg5 = "${iconpath}checksvg5.svg";
+  // static const String checksvg6 = "${iconpath}checksvg6.svg";
+  // static const String checksvg7 = "${iconpath}checksvg7.svg";
+  // static const String checksvg8 = "${iconpath}checksvg8.svg";
+  // static const String checksvg9 = "${iconpath}checksvg9.svg";
+  // static const String checksvg10 = "${iconpath}checksvg10.svg";
+  // static const String checksvg11 = "${iconpath}checksvg11.svg";
+  // static const String checksvg12 = "${iconpath}checksvg12.svg";
+  // static const String checksvg13 = "${iconpath}checksvg13.svg";
+  // static const String checksvg14 = "${iconpath}checksvg14.svg";
+  // static const String checksvg15 = "${iconpath}checksvg15.svg";
+  // static const String checksvg16 = "${iconpath}checksvg16.svg";
 }
