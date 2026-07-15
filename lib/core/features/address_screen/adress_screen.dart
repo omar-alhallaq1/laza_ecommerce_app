@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
@@ -18,6 +18,23 @@ class AdressScreen extends StatefulWidget {
 
 class _AdressScreenState extends State<AdressScreen> {
   bool _isRemembered = false;
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    countryController.dispose();
+    cityController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +66,8 @@ class _AdressScreenState extends State<AdressScreen> {
                     ],
                   ),
                   Gap(25.h),
+
+                  /// Name
                   Text(
                     "Name",
                     style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
@@ -56,14 +75,16 @@ class _AdressScreenState extends State<AdressScreen> {
                   Gap(10.h),
                   CustomTextField2(
                     hintText: "Mrh Raju",
-                    controller: TextEditingController(),
-                    //  validator: (value) {},
+                    controller: nameController,
                     isPassword: false,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.name,
                     width: double.infinity,
                   ),
+
                   Gap(15.h),
+
+                  /// Country & City
                   Row(
                     children: [
                       Column(
@@ -79,8 +100,7 @@ class _AdressScreenState extends State<AdressScreen> {
                           CustomTextField2(
                             width: 160.w,
                             hintText: "Bangladesh",
-                            controller: TextEditingController(),
-                            //  validator: (value) {},
+                            controller: countryController,
                             isPassword: false,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
@@ -101,8 +121,7 @@ class _AdressScreenState extends State<AdressScreen> {
                           CustomTextField2(
                             width: 160.w,
                             hintText: "Sylhet",
-                            controller: TextEditingController(),
-                            //  validator: (value) {},
+                            controller: cityController,
                             isPassword: false,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
@@ -111,7 +130,10 @@ class _AdressScreenState extends State<AdressScreen> {
                       ),
                     ],
                   ),
+
                   Gap(15.h),
+
+                  /// Phone
                   Text(
                     "Phone",
                     style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
@@ -120,13 +142,15 @@ class _AdressScreenState extends State<AdressScreen> {
                   CustomTextField2(
                     width: double.infinity,
                     hintText: "01712345678",
-                    controller: TextEditingController(),
-                    //  validator: (value) {},
+                    controller: phoneController,
                     isPassword: false,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.phone,
                   ),
+
                   Gap(15.h),
+
+                  /// Address Details
                   Text(
                     "Address",
                     style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
@@ -135,13 +159,15 @@ class _AdressScreenState extends State<AdressScreen> {
                   CustomTextField2(
                     width: double.infinity,
                     hintText: "Chhatak, Sunamgonj 12/8AB",
-                    controller: TextEditingController(),
-                    //  validator: (value) {},
+                    controller: addressController,
                     isPassword: false,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.phone,
+                    textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.streetAddress,
                   ),
+
                   Gap(20.h),
+
+                  /// Switch
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -160,7 +186,7 @@ class _AdressScreenState extends State<AdressScreen> {
                           activeThumbColor: Colors.white,
                           activeTrackColor: const Color(0xff34C759),
                           inactiveTrackColor: const Color(0xffE9E9EA),
-                          onChanged: (bool value) {
+                          onChanged: (value) {
                             setState(() {
                               _isRemembered = value;
                             });
@@ -172,7 +198,9 @@ class _AdressScreenState extends State<AdressScreen> {
                 ],
               ),
             ),
+
             Gap(216.h),
+
             PrimaryButtonwidget(
               width: double.infinity,
               height: 75.h,
@@ -182,7 +210,14 @@ class _AdressScreenState extends State<AdressScreen> {
               buttoncolor: AppColors.primarycolor,
               textColor: AppColors.whitecolor,
               onpress: () {
-                //  GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
+                debugPrint("Name: ${nameController.text}");
+                debugPrint("Country: ${countryController.text}");
+                debugPrint("City: ${cityController.text}");
+                debugPrint("Phone: ${phoneController.text}");
+                debugPrint("Address: ${addressController.text}");
+                debugPrint("Primary: $_isRemembered");
+
+                // GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
               },
             ),
           ],
