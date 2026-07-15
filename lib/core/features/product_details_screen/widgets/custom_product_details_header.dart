@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/custom_icon_button.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
+import 'package:laza_ecommerce_app/core/wedgets/custom_back_button_widget.dart';
 
 class ProductDetailHeader extends StatelessWidget {
   final String? imageUrl; // الروابط ستكون Nullable حالياً لوقت ربط الـ API
@@ -33,17 +35,9 @@ class ProductDetailHeader extends StatelessWidget {
         Positioned(
           top: 45.h,
           left: 20.w,
-          child: CustomIconButton(
-            onTap: () {},
-            icon: SvgPicture.asset(
-              AppAssets.arrowleft,
-              width: 24.w,
-              height: 24.h,
-              colorFilter: const ColorFilter.mode(
-                Colors.black,
-                BlendMode.srcIn,
-              ),
-            ),
+          child: CustomBackButtonWidget(
+            icon: SvgPicture.asset(AppAssets.arrowleft),
+            onTap: () => context.pop(),
           ),
         ),
         Positioned(

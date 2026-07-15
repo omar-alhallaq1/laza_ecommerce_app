@@ -10,6 +10,8 @@ class CustomTextField2 extends StatelessWidget {
   final int? maxLines;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   const CustomTextField2({
     super.key,
     this.hintText,
@@ -19,6 +21,8 @@ class CustomTextField2 extends StatelessWidget {
     this.controller,
     this.validator,
     this.maxLines,
+    this.keyboardType,
+    this.textInputAction,
   });
 
   @override
@@ -30,6 +34,8 @@ class CustomTextField2 extends StatelessWidget {
         validator: validator,
         maxLines: maxLines ?? 1,
         autofocus: false,
+        keyboardType: keyboardType,
+        textInputAction: textInputAction,
         obscureText: isPassword ?? false,
         cursorColor: AppColors.primarycolor,
         decoration: InputDecoration(

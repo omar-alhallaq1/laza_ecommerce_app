@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/features/cart_screen/widgets/custom_cart_item_card.dart';
 import 'package:laza_ecommerce_app/core/features/cart_screen/widgets/custom_delivery_address_card.dart';
 import 'package:laza_ecommerce_app/core/features/cart_screen/widgets/custom_order_info_section.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -77,7 +79,9 @@ class _CartScreenState extends State<CartScreen> {
                     subtitle: "Sylhet",
                     imageUrl: AppAssets.mapimage,
                     showPinIcon: true,
-                    onTap: () {},
+                    onTap: () {
+                      GoRouter.of(context).pushNamed(AppRoutes.addressscreen);
+                    },
                   ),
                   Gap(20.h),
                   InfoCardWidget(
