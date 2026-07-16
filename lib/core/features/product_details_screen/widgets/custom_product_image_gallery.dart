@@ -41,7 +41,7 @@ class ProductImageThumb extends StatelessWidget {
               : CachedNetworkImage(
                   imageUrl: imageUrl,
                   fit: BoxFit.cover,
-                  errorWidget: (_, __, ___) => Container(
+                  errorWidget: (context, url, error) => Container(
                     color: const Color(0xFFF5F6F8),
                     child: const Center(
                       child: Icon(
