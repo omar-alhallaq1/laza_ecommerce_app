@@ -7,7 +7,6 @@ class CardItemWidget extends StatelessWidget {
   final String cardType;
   final String cardNumber;
   final String balance;
-  // إضافة المتغيرات الثلاثة هنا لتغيير الخلفيات والألوان ديناميكياً
   final String bgLayer1;
   final String bgLayer2;
   final String bgLayer3;

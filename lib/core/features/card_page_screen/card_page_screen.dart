@@ -1,39 +1,205 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// قم بتغيير هذا المسار ليتوافق مع مكان ملف الـ CarouselWidget لديك
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:laza_ecommerce_app/core/features/card_page_screen/widgets/carousel_widget.dart';
+import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
+import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
+import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
+import 'package:laza_ecommerce_app/core/wedgets/custom_back_button_widget.dart';
+import 'package:laza_ecommerce_app/core/wedgets/custom_text_field2.dart';
+import 'package:laza_ecommerce_app/core/wedgets/primary_button_wedgit.dart';
 
-class CardsScreen extends StatelessWidget {
+class CardsScreen extends StatefulWidget {
   const CardsScreen({super.key});
+
+  @override
+  State<CardsScreen> createState() => _CardsScreenState();
+}
+
+class _CardsScreenState extends State<CardsScreen> {
+  final TextEditingController cardOwnerController = TextEditingController();
+
+  final TextEditingController cardNumberController = TextEditingController();
+
+  final TextEditingController expController = TextEditingController();
+
+  final TextEditingController cvvController = TextEditingController();
+
+  @override
+  void dispose() {
+    cardOwnerController.dispose();
+    cardNumberController.dispose();
+    expController.dispose();
+    cvvController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // يمكنك إضافة AppBar إذا كان التصميم يحتوي على عنوان صفحة
-      appBar: AppBar(
-        title: const Text("Payment Cards"),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          // لحماية الشاشة من مشاكل Overflow إذا أضفت عناصر أخرى تحت الكروت
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // استدعاء الـ Carousel الذي يحتوي على الـ Slider والنقاط
-                const CarouselWidget(),
-
-                SizedBox(height: 30.h),
-
-                // هنا يمكنك لاحقاً إضافة باقي عناصر الصفحة مثل زر "Add new card" أو قائمة العمليات الأخيرة
-              ],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20).r,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Gap(45.h),
+                  Row(
+                    children: [
+                      CustomBackButtonWidget(
+                        icon: SvgPicture.asset(
+                          AppAssets.arrowleft,
+                          width: 24.w,
+                          height: 24.h,
+                        ),
+                        onTap: () => Navigator.pop(context),
+                      ),
+                      Gap(104.w),
+                      Text(
+                        "Cart",
+                        style: AppStyles.black28boldstyle.copyWith(
+                          fontSize: 17.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap(25.h),
+                  CarouselWidget(),
+                  Gap(15.h),
+                  OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      fixedSize: Size(325.w, 50.h),
+                      backgroundColor: const Color(0xffF6F2FF),
+                      side: BorderSide(color: AppColors.primarycolor, width: 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.r),
+                      ),
+                      elevation: 0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.plussvg,
+                          width: 15.w,
+                          height: 15.h,
+                          colorFilter: ColorFilter.mode(
+                            AppColors.primarycolor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        Gap(8.w), // مسافة صغيرة بين الأيقونة والنص
+                        Text(
+                          "Add new card",
+                          style: TextStyle(
+                            color: const Color(0xFF9E7BFF),
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Gap(20.h),
+                  Text(
+                    "Card Owner",
+                    style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+                  ),
+                  Gap(10.h),
+                  CustomTextField2(
+                    controller: cardOwnerController,
+                    hintText: "Mrh Raju",
+                    isPassword: false,
+                    width: 325.w,
+                    //  validator: (value) {},
+                    keyboardType: TextInputType.name,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  Gap(15.h),
+                  Text(
+                    "Card Number",
+                    style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+                  ),
+                  Gap(10.h),
+                  CustomTextField2(
+                    controller: cardNumberController,
+                    hintText: "0000 0000 0000 0000",
+                    isPassword: false,
+                    width: 325.w,
+                    //  validator: (value) {},
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  Gap(15.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "EXP",
+                            style: AppStyles.black28boldstyle.copyWith(
+                              fontSize: 17.sp,
+                            ),
+                          ),
+                          Gap(10.h),
+                          CustomTextField2(
+                            controller: expController,
+                            hintText: "MM/YY",
+                            isPassword: false,
+                            width: 160.w,
+                            //  validator: (value) {},
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "CVV",
+                            style: AppStyles.black28boldstyle.copyWith(
+                              fontSize: 17.sp,
+                            ),
+                          ),
+                          Gap(10.h),
+                          CustomTextField2(
+                            controller: cvvController,
+                            hintText: "CVV",
+                            isPassword: false,
+                            width: 160.w,
+                            //  validator: (value) {},
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
+            Gap(85.h),
+            PrimaryButtonwidget(
+              width: double.infinity,
+              height: 75.h,
+              borderradius: 0.r,
+              fontsize: 20.sp,
+              buttontext: "Save Card",
+              buttoncolor: AppColors.primarycolor,
+              textColor: AppColors.whitecolor,
+              onpress: () {
+                // GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
+              },
+            ),
+          ],
         ),
       ),
     );
