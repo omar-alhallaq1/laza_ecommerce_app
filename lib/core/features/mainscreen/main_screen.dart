@@ -68,7 +68,7 @@ class MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: selectedIndex == 1
                   ? Text(
-                      'Favorites', // أو 'Cart' حسب رغبتك
+                      'Favorites',
                       style: TextStyle(
                         color: AppColors.primarycolor,
                         fontWeight: FontWeight.bold,
