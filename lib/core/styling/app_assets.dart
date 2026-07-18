@@ -32,9 +32,9 @@ class AppAssets {
   static const String mapimage = "${imagepath}mapimage.png";
   static const String checksvg = "${iconpath}checksvg.svg";
   static const String vicaimage = "${imagepath}vicaimage.png";
-  //static const String vector1 = "${imagepath}Vector1.png";
-  //static const String vector2 = "${imagepath}vector2.png";
-  // static const String vector3 = "${imagepath}vector3.png";
+  static const String vector1 = "${imagepath}Vector1.png";
+  static const String vector2 = "${imagepath}vector2.png";
+  static const String vector3 = "${imagepath}vector3.png";
   // static const String checksvg6 = "${iconpath}checksvg6.svg";
   // static const String checksvg7 = "${iconpath}checksvg7.svg";
   // static const String checksvg8 = "${iconpath}checksvg8.svg";

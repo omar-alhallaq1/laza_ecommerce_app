@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
-import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
 
 class CardItemWidget extends StatelessWidget {
@@ -9,6 +7,10 @@ class CardItemWidget extends StatelessWidget {
   final String cardType;
   final String cardNumber;
   final String balance;
+  // إضافة المتغيرات الثلاثة هنا لتغيير الخلفيات والألوان ديناميكياً
+  final String bgLayer1;
+  final String bgLayer2;
+  final String bgLayer3;
 
   const CardItemWidget({
     super.key,
@@ -16,60 +18,56 @@ class CardItemWidget extends StatelessWidget {
     required this.cardType,
     required this.cardNumber,
     required this.balance,
+    required this.bgLayer1,
+    required this.bgLayer2,
+    required this.bgLayer3,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300.w,
+      width: 325.w,
       height: 190.h,
-      margin: EdgeInsets.symmetric(horizontal: 8.w),
+      margin: EdgeInsets.symmetric(horizontal: 4.w),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.r)),
       child: Stack(
         children: [
-          /// Background
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: AppColors.primarycolor,
-              borderRadius: BorderRadius.circular(24.r),
+          /// Layer 1: الخلفية الأساسية للكرت
+          Positioned.fill(
+            child: Image.asset(
+              bgLayer1,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(),
             ),
           ),
 
-          /// Layer 1
+          /// Layer 2: المنحنى السفلي والأيس
           Positioned(
             bottom: 0,
             left: 0,
+            width: 325.w,
+            height: 125.h,
             child: Image.asset(
-              AppAssets.layar1,
-              width: 250.w,
-              fit: BoxFit.contain,
+              bgLayer2,
+              fit: BoxFit.fill,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(),
             ),
           ),
 
-          /// Layer 2
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              AppAssets.layer2,
-              width: 220.w,
-              fit: BoxFit.contain,
-            ),
-          ),
-
-          /// Layer 3
+          /// Layer 3: المنحنى القطري الأيمن
           Positioned(
             top: 0,
             right: 0,
+            bottom: 0,
+            width: 270.w,
             child: Image.asset(
-              AppAssets.layer3,
-              width: 190.w,
-              fit: BoxFit.contain,
+              bgLayer3,
+              fit: BoxFit.fill,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(),
             ),
           ),
 
-          /// Holder Name
           Positioned(
             top: 22.h,
             left: 22.w,
@@ -77,52 +75,45 @@ class CardItemWidget extends StatelessWidget {
               cardHolder,
               style: AppStyles.black28boldstyle.copyWith(
                 color: Colors.white,
-                fontSize: 22.sp,
+                fontSize: 20.sp,
               ),
             ),
           ),
-
-          /// Visa
           Positioned(
             top: 22.h,
             right: 22.w,
             child: Text(
-              "VISA",
+              cardType.toLowerCase().contains('visa') ? "VISA" : "MC",
               style: AppStyles.black28boldstyle.copyWith(
                 color: Colors.white,
                 fontSize: 20.sp,
+                fontStyle: FontStyle.italic,
               ),
             ),
           ),
-
-          /// Card Type
           Positioned(
             left: 22.w,
-            top: 88.h,
+            top: 85.h,
             child: Text(
               cardType,
               style: AppStyles.black28boldstyle.copyWith(
                 color: Colors.white,
-                fontSize: 18.sp,
+                fontSize: 16.sp,
               ),
             ),
           ),
-
-          /// Card Number
           Positioned(
             left: 22.w,
-            bottom: 58.h,
+            bottom: 55.h,
             child: Text(
               cardNumber,
               style: AppStyles.black28boldstyle.copyWith(
                 color: Colors.white,
-                fontSize: 20.sp,
+                fontSize: 18.sp,
                 letterSpacing: 2,
               ),
             ),
           ),
-
-          /// Balance
           Positioned(
             left: 22.w,
             bottom: 18.h,
@@ -130,7 +121,7 @@ class CardItemWidget extends StatelessWidget {
               balance,
               style: AppStyles.black28boldstyle.copyWith(
                 color: Colors.white,
-                fontSize: 28.sp,
+                fontSize: 26.sp,
               ),
             ),
           ),
