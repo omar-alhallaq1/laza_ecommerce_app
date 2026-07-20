@@ -23,6 +23,20 @@ class AddNewCardScreen extends StatefulWidget {
 
 class _AddNewCardScreenState extends State<AddNewCardScreen> {
   PaymentType selectedPayment = PaymentType.mastercard;
+  final ownerController = TextEditingController();
+  final cardNumberController = TextEditingController();
+  final expController = TextEditingController();
+  final cvvController = TextEditingController();
+  final paypalEmailController = TextEditingController();
+  @override
+  void dispose() {
+    ownerController.dispose();
+    cardNumberController.dispose();
+    expController.dispose();
+    cvvController.dispose();
+    paypalEmailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,10 +146,19 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
 
                     // تبديل الأشكال تلقائياً باستدعاء الويدجتس المنفصلة
                     AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 250),
                       child: selectedPayment == PaymentType.mastercard
-                          ? const MastercardFormWidget()
-                          : const PaypalFormWidget(),
+                          ? MastercardFormWidget(
+                              key: const ValueKey('mastercard'),
+                              ownerController: ownerController,
+                              cardNumberController: cardNumberController,
+                              expController: expController,
+                              cvvController: cvvController,
+                            )
+                          : PaypalFormWidget(
+                              key: const ValueKey('paypal'),
+                              emailController: paypalEmailController,
+                            ),
                     ),
                   ],
                 ),
@@ -147,11 +170,11 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
               height: 75.h,
               borderradius: 0.r,
               fontsize: 20.sp,
-              buttontext: "Login",
+              buttontext: "Save Card",
               buttoncolor: AppColors.primarycolor,
               textColor: AppColors.whitecolor,
               onpress: () {
-                GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
+                //   GoRouter.of(context).pushNamed(AppRoutes.mainscreen);
               },
             ),
           ],

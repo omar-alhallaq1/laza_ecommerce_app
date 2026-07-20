@@ -1,22 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:laza_ecommerce_app/core/features/add_new_card_screen/widgets/custom_input_label_widget.dart';
-import 'package:laza_ecommerce_app/core/wedgets/custom_text_field.dart';
+import 'package:gap/gap.dart';
+import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
+import 'package:laza_ecommerce_app/core/wedgets/custom_text_field2.dart';
 
 class MastercardFormWidget extends StatelessWidget {
-  const MastercardFormWidget({super.key});
+  final TextEditingController ownerController;
+  final TextEditingController cardNumberController;
+  final TextEditingController expController;
+  final TextEditingController cvvController;
+
+  const MastercardFormWidget({
+    super.key,
+    required this.ownerController,
+    required this.cardNumberController,
+    required this.expController,
+    required this.cvvController,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      key: const ValueKey('mastercard_ui'),
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomInputLabelWidget(labelText: "Card Owner"),
-        const CustomTextField(hintText: "Mrh Raju"),
+        Gap(20.h),
 
-        const CustomInputLabelWidget(labelText: "Card Number"),
-        const CustomTextField(hintText: "5254 7634 8734 7690"),
+        Text(
+          "Card Owner",
+          style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+        ),
+        Gap(10.h),
+
+        CustomTextField2(
+          hintText: "Mrh Raju",
+          controller: ownerController,
+          keyboardType: TextInputType.name,
+          textInputAction: TextInputAction.next,
+        ),
+
+        Gap(20.h),
+
+        Text(
+          "Card Number",
+          style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+        ),
+        Gap(10.h),
+
+        CustomTextField2(
+          hintText: "5254 7634 8734 7690",
+          controller: cardNumberController,
+          keyboardType: TextInputType.number,
+          textInputAction: TextInputAction.next,
+        ),
+
+        Gap(20.h),
 
         Row(
           children: [
@@ -24,18 +61,41 @@ class MastercardFormWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomInputLabelWidget(labelText: "EXP"),
-                  const CustomTextField(hintText: "24/24"),
+                  Text(
+                    "EXP",
+                    style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+                  ),
+                  Gap(10.h),
+
+                  CustomTextField2(
+                    hintText: "12/28",
+                    controller: expController,
+                    keyboardType: TextInputType.datetime,
+                    textInputAction: TextInputAction.next,
+                  ),
                 ],
               ),
             ),
-            SizedBox(width: 15.w),
+
+            Gap(15.w),
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomInputLabelWidget(labelText: "CVV"),
-                  const CustomTextField(hintText: "7763"),
+                  Text(
+                    "CVV",
+                    style: AppStyles.black28boldstyle.copyWith(fontSize: 17.sp),
+                  ),
+                  Gap(10.h),
+
+                  CustomTextField2(
+                    hintText: "123",
+                    controller: cvvController,
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    isPassword: true,
+                  ),
                 ],
               ),
             ),
