@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/features/card_page_screen/widgets/carousel_widget.dart';
+import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
@@ -60,7 +62,7 @@ class _CardsScreenState extends State<CardsScreen> {
                       ),
                       Gap(104.w),
                       Text(
-                        "Cart",
+                        "Payment",
                         style: AppStyles.black28boldstyle.copyWith(
                           fontSize: 17.sp,
                         ),
@@ -71,7 +73,11 @@ class _CardsScreenState extends State<CardsScreen> {
                   CarouselWidget(),
                   Gap(15.h),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(
+                        context,
+                      ).pushNamed(AppRoutes.addNewCardScreen);
+                    },
                     style: OutlinedButton.styleFrom(
                       fixedSize: Size(325.w, 50.h),
                       backgroundColor: const Color(0xffF6F2FF),
@@ -93,7 +99,7 @@ class _CardsScreenState extends State<CardsScreen> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        Gap(8.w), // مسافة صغيرة بين الأيقونة والنص
+                        Gap(8.w),
                         Text(
                           "Add new card",
                           style: TextStyle(

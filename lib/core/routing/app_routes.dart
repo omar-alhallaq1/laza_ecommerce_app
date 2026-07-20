@@ -12,4 +12,5 @@ class AppRoutes {
   static const String reviewsScreen = '/reviewsScreen';
   static const String addreviewsscreen = '/addreviewsscreen';
   static const String addressscreen = '/addressscreen';
+  static const String addNewCardScreen = '/addNewCardScreen';
 }

@@ -36,8 +36,8 @@ class AppAssets {
   static const String vector2 = "${imagepath}vector2.png";
   static const String vector3 = "${imagepath}vector3.png";
   static const String plussvg = "${iconpath}plussvg.svg";
-  // static const String checksvg7 = "${iconpath}checksvg7.svg";
-  // static const String checksvg8 = "${iconpath}checksvg8.svg";
+  static const String mastercardimage = "${imagepath}mastercardimage.png";
+  static const String paypalimage = "${imagepath}paypalimage.png";
   // static const String checksvg9 = "${iconpath}checksvg9.svg";
   // static const String checksvg10 = "${iconpath}checksvg10.svg";
   // static const String checksvg11 = "${iconpath}checksvg11.svg";

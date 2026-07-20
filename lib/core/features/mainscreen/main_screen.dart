@@ -64,7 +64,6 @@ class MainScreenState extends State<MainScreen> {
               label: '', // نتركه فارغاً لأننا نتحكم بالـ icon مباشرة
             ),
 
-            // 2. Cart Item (أو أيقونة الـ Heart بناءً على تصميمك)
             BottomNavigationBarItem(
               icon: selectedIndex == 1
                   ? Text(

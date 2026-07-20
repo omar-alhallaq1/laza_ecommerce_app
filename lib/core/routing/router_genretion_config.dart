@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/auth/login_screen.dart';
 import 'package:laza_ecommerce_app/core/auth/signup_screen.dart';
+import 'package:laza_ecommerce_app/core/features/add_new_card_screen/add_new_card_screen.dart';
 import 'package:laza_ecommerce_app/core/features/add_review_screen/add_review_screen.dart';
 import 'package:laza_ecommerce_app/core/features/address_screen/adress_screen.dart';
 import 'package:laza_ecommerce_app/core/features/mainscreen/main_screen.dart';
@@ -88,6 +89,12 @@ class RouterGanretionConfig {
         path: AppRoutes.addressscreen,
 
         builder: (context, state) => const AdressScreen(),
+      ),
+      GoRoute(
+        name: AppRoutes.addNewCardScreen,
+        path: AppRoutes.addNewCardScreen,
+
+        builder: (context, state) => const AddNewCardScreen(),
       ),
     ],
   );
