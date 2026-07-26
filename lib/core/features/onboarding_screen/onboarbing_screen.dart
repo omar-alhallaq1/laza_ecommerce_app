@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
+import 'package:laza_ecommerce_app/core/styling/app_styles.dart';
+import 'package:laza_ecommerce_app/core/wedgets/primary_button_wedgit.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -16,8 +18,10 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // 1. طبقة الخلفية البنفسجية الثابتة
+          // Background
           Positioned.fill(child: Container(color: AppColors.primarycolor)),
+
+          // Top Left Shape
           Positioned(
             top: 0,
             left: -40.w,
@@ -29,9 +33,10 @@ class OnboardingScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          // 2. طبقة الإضاءة الجانبية
+
+          // Left Light
           Positioned(
-            top: size.height * 0.28.h,
+            top: size.height * 0.28,
             left: -60.w,
             child: Image.asset(
               AppAssets.layer2,
@@ -40,6 +45,8 @@ class OnboardingScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
+
+          // Bottom Right Light
           Positioned(
             bottom: 59.h,
             right: -69.w,
@@ -51,115 +58,93 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
 
+          // Main Image
           Positioned(
-            top: size.height * 0.12.h,
+            top: size.height * 0.12,
             left: 0,
             right: 0,
-            bottom: size.height * 0.24.h,
+            bottom: size.height * 0.24,
             child: Image.asset(AppAssets.onbording, fit: BoxFit.contain),
           ),
 
+          // Bottom Card
           Positioned(
             bottom: 40.h,
-            left: 15,
-            right: 15,
+            left: 15.w,
+            right: 15.w,
             child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 15,
-              ).w,
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+                color: AppColors.whitecolor,
+                borderRadius: BorderRadius.circular(25.r),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Gap(25.h),
+                  Text(
                     'Look Good, Feel Good',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                    style: AppStyles.black28boldstyle.copyWith(fontSize: 25.sp),
                   ),
+
                   Gap(10.h),
-                  const Text(
+
+                  Text(
                     'Create your individual & unique style and look amazing everyday.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey,
-                      height: 1.4,
-                    ),
+                    style: AppStyles.gry13meduemstyle.copyWith(fontSize: 15.sp),
                   ),
+
                   Gap(25.h),
 
                   Row(
                     children: [
                       Expanded(
                         child: SizedBox(
-                          height: 55,
-                          child: ElevatedButton(
-                            onPressed: () {
+                          height: 60.h,
+                          child: PrimaryButtonwidget(
+                            buttontext: 'Men',
+                            textColor: AppColors.graycolor,
+                            buttoncolor: AppColors.lightgray,
+                            onpress: () {
                               GoRouter.of(
                                 context,
                               ).pushNamed(AppRoutes.startedscreen);
                             },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFF5F6FA),
-                              foregroundColor: Colors.grey[600],
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            child: const Text(
-                              'Men',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
                           ),
                         ),
                       ),
-                      Gap(15.h),
+
+                      Gap(15.w),
+
                       Expanded(
                         child: SizedBox(
-                          height: 55,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF9775FA),
-                              foregroundColor: Colors.white,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            child: const Text(
-                              'Women',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                          height: 60.h,
+                          child: PrimaryButtonwidget(
+                            buttontext: 'Women',
+                            onpress: () {
+                              GoRouter.of(
+                                context,
+                              ).pushNamed(AppRoutes.startedscreen);
+                            },
                           ),
                         ),
                       ),
                     ],
                   ),
+
                   Gap(20.h),
 
                   TextButton(
-                    onPressed: () {},
-                    child: const Text(
+                    onPressed: () {
+                      GoRouter.of(
+                        context,
+                      ).pushNamed(AppRoutes.orderconfirmedscreen);
+                    },
+                    child: Text(
                       'Skip',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      style: AppStyles.gry13meduemstyle.copyWith(
+                        fontSize: 17.sp,
                       ),
                     ),
                   ),

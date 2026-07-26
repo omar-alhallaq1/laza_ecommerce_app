@@ -4,8 +4,10 @@ import 'package:laza_ecommerce_app/core/auth/signup_screen.dart';
 import 'package:laza_ecommerce_app/core/features/add_new_card_screen/add_new_card_screen.dart';
 import 'package:laza_ecommerce_app/core/features/add_review_screen/add_review_screen.dart';
 import 'package:laza_ecommerce_app/core/features/address_screen/adress_screen.dart';
+import 'package:laza_ecommerce_app/core/features/home_screen/home_screen.dart';
 import 'package:laza_ecommerce_app/core/features/mainscreen/main_screen.dart';
 import 'package:laza_ecommerce_app/core/features/onboarding_screen/onboarbing_screen.dart';
+import 'package:laza_ecommerce_app/core/features/order_confirmed_screen/order_confirmed_screen.dart';
 import 'package:laza_ecommerce_app/core/features/product_details_screen/product_details_screen.dart';
 import 'package:laza_ecommerce_app/core/features/reviews_screen/reviews_screen.dart';
 import 'package:laza_ecommerce_app/core/features/started_screen/started_screen.dart';
@@ -95,6 +97,18 @@ class RouterGanretionConfig {
         path: AppRoutes.addNewCardScreen,
 
         builder: (context, state) => const AddNewCardScreen(),
+      ),
+      GoRoute(
+        name: AppRoutes.homeScreen,
+        path: AppRoutes.homeScreen,
+
+        builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        name: AppRoutes.orderconfirmedscreen,
+        path: AppRoutes.orderconfirmedscreen,
+
+        builder: (context, state) => const OrderConfirmedScreen(),
       ),
     ],
   );

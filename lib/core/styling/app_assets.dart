@@ -38,10 +38,11 @@ class AppAssets {
   static const String plussvg = "${iconpath}plussvg.svg";
   static const String mastercardimage = "${imagepath}mastercardimage.png";
   static const String paypalimage = "${imagepath}paypalimage.png";
-  // static const String checksvg9 = "${iconpath}checksvg9.svg";
-  // static const String checksvg10 = "${iconpath}checksvg10.svg";
-  // static const String checksvg11 = "${iconpath}checksvg11.svg";
-  // static const String checksvg12 = "${iconpath}checksvg12.svg";
+  static const String maskgroup = "${imagepath}maskgroup.png";
+  static const String orderconfirmedimage =
+      "${imagepath}orderconfirmedimage.png";
+  // static const String image1 = "${imagepath}image1.png";
+  // static const String maskgroup = "${iconpath}maskgroup.svg";
   // static const String checksvg13 = "${iconpath}checksvg13.svg";
   // static const String checksvg14 = "${iconpath}checksvg14.svg";
   // static const String checksvg15 = "${iconpath}checksvg15.svg";
