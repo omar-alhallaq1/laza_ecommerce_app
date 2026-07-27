@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/brand_card.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/custom_icon_button.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/widgets/product_item_card.dart';
+import 'package:laza_ecommerce_app/core/features/side_menu/side_menu_screen.dart';
 import 'package:laza_ecommerce_app/core/routing/app_routes.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
@@ -19,9 +20,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const SideMenu(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -33,13 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomIconButton(
-                  onTap: () {},
-                  icon: SvgPicture.asset(
-                    AppAssets.menusvg,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
+                  onTap: () {
+                    scaffoldKey.currentState?.openDrawer();
+                  },
+                  icon: SvgPicture.asset(AppAssets.menusvg),
                 ),
+
                 CustomIconButton(
                   onTap: () {},
                   icon: SvgPicture.asset(

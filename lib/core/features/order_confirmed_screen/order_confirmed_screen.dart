@@ -55,6 +55,7 @@ class OrderConfirmedScreen extends StatelessWidget {
                     height: 56.h,
                     onpress: () {},
                     buttontext: "Go to Home",
+                    textColor: AppColors.graycolor,
                     buttoncolor: AppColors.lightgray,
                   ),
                 ],
@@ -66,7 +67,7 @@ class OrderConfirmedScreen extends StatelessWidget {
               height: 75.h,
               borderradius: 0.r,
               fontsize: 20.sp,
-              buttontext: "Confirm Email",
+              buttontext: "Continue Shopping",
               buttoncolor: AppColors.primarycolor,
               textColor: AppColors.whitecolor,
               onpress: () {

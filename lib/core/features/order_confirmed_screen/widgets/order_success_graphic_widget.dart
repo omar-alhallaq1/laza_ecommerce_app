@@ -13,7 +13,7 @@ class OrderSuccessGraphic extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-      height: screenHeight * 0.35,
+      height: screenHeight * 0.35.h,
       width: double.infinity,
       color: Colors.transparent,
       child: Stack(
@@ -22,10 +22,13 @@ class OrderSuccessGraphic extends StatelessWidget {
           Positioned.fill(child: CustomPaint(painter: BackgroundArcsPainter())),
           Image.asset(
             AppAssets.orderconfirmedimage,
-            height: screenHeight * 0.3,
+            height: screenHeight * 0.3.h,
             fit: BoxFit.contain,
-            errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.phone_android, size: 50, color: Colors.grey),
+            errorBuilder: (context, error, stackTrace) => Icon(
+              Icons.phone_android,
+              size: 50.sp,
+              color: AppColors.graycolor,
+            ),
           ),
         ],
       ),
