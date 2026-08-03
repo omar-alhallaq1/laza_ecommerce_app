@@ -41,7 +41,7 @@ class AppAssets {
   static const String maskgroup = "${imagepath}maskgroup.png";
   static const String orderconfirmedimage =
       "${imagepath}orderconfirmedimage.png";
-  // static const String image1 = "${imagepath}image1.png";
+  static const String pinsvg = "${iconpath}pinsvg.svg";
   // static const String maskgroup = "${iconpath}maskgroup.svg";
   // static const String checksvg13 = "${iconpath}checksvg13.svg";
   // static const String checksvg14 = "${iconpath}checksvg14.svg";

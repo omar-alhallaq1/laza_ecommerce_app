@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:laza_ecommerce_app/core/features/card_page_screen/card_page_screen.dart';
 import 'package:laza_ecommerce_app/core/features/cart_screen/cart_screen.dart';
 import 'package:laza_ecommerce_app/core/features/home_screen/home_screen.dart';
+import 'package:laza_ecommerce_app/core/features/wishlist_screen/wishlist_screen.dart';
 import 'package:laza_ecommerce_app/core/styling/app_assets.dart';
 import 'package:laza_ecommerce_app/core/styling/app_colors.dart';
 
@@ -18,7 +19,7 @@ class MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
   List<Widget> screens = [
     HomeScreen(),
-    Container(),
+    WishlistScreen(),
     CartScreen(),
     CardsScreen(),
   ];
@@ -28,7 +29,7 @@ class MainScreenState extends State<MainScreen> {
       child: Scaffold(
         body: screens[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color(0xffFFFFFF),
+          backgroundColor: AppColors.whitecolor,
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.primarycolor,
