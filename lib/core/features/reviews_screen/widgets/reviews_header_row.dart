@@ -62,7 +62,7 @@ class ReviewsHeaderRow extends StatelessWidget {
                   itemCount: 5,
                   itemSize: starSize ?? 15.sp,
                   unratedColor: const Color(0xff8F959E),
-                  itemBuilder: (_, __) => SvgPicture.asset(
+                  itemBuilder: (_, _) => SvgPicture.asset(
                     AppAssets.starsvg,
                     width: 13.w,
                     height: 13.h,
